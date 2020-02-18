@@ -37,7 +37,6 @@
         this.$formElement.on('input', '[name="emailAddress"]', function(event) {
             var email = event.target.value;
             var message = '';
-            console.log(fn(email));
             if (fn(email)) {
                 event.target.setCustomValidity('');
             } else {
