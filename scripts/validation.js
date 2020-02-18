@@ -1,4 +1,5 @@
 (function(window) {
+    'use strict'
     var App = window.App || {};
 
     var Validation = {
@@ -6,6 +7,7 @@
             return /.+@shuheng\.com$/.test(email);  // forward slashes denote regex literal
         }
     };
+
     App.Validation = Validation;
     window.App = App;
 })(window);
