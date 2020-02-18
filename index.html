@@ -24,6 +24,11 @@
 
     <!-- bootstrap css -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <style type="text/css">
+        form :invalid:focus:required{
+            border-color: #a94442;
+        }
+    </style>
     <title>CoffeeRun</title>
 </head>
 <body class="container">
@@ -37,13 +42,13 @@
                     <!-- field -->
                     <div class="form-group">
                         <label for="coffeeOrder">Coffee Order</label>
-                        <input class="form-control" name="coffee" id="coffeeOrder" autofocus>
+                        <input class="form-control" name="coffee" id="coffeeOrder" autofocus required pattern="[a-zA-Z\s]+">
                     </div>
 
                     <!-- field -->
                     <div class="form-group">
                         <label for="emailInput">Email</label>
-                        <input class="form-control" name="emailAddress" type="email" id="emailInput" value="" placeholder="dr@who.com">
+                        <input class="form-control" name="emailAddress" type="email" id="emailInput" value="" placeholder="dr@who.com" required>
                     </div>
 
                     <!-- radar selection -->
@@ -102,6 +107,7 @@
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+    <script src="scripts/validation.js" charset="utf-8"></script>
     <script src="scripts/checklist.js" charset="utf-8"></script>
     <script src="scripts/formhandler.js" charset="utf-8"></script>
     <script src="scripts/datastore.js" charset="utf-8"></script>
