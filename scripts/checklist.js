@@ -56,8 +56,9 @@
         // event delegation: only triggers if `click` on `<input>` element
         this.$element.on('click', 'input', function(event) {  
             var email = event.target.value;
-            this.removeRow(email);
-            fn(email);
+            fn(email).then(function() {
+                this.removeRow(email);
+            }.bind(this));
         }.bind(this));
     };
 

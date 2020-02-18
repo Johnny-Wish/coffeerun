@@ -12,15 +12,19 @@
     var Checklist = App.Checklist;
     var remoteDS = new RemoteDataStore(SERVER_URL);
     var myTruck = new Truck('ncc-1701', remoteDS);
+    // var myTruck = new Truck('ncc-1701', new DataStore());
     window.myTruck = myTruck;
     var checklist = new Checklist(CHECKLIST_SELECTOR);
     checklist.addClickListener(myTruck.deliverOrder.bind(myTruck));
 
     var formHandler = new FormHandler(FORM_SELECTOR);
     formHandler.addSubmitHandler(function(data) {
-        myTruck.createOrder.call(myTruck, data);
-        checklist.addRow.call(checklist, data);
+        return myTruck.createOrder.call(myTruck, data)
+        .then(function() {
+            checklist.addRow.call(checklist, data);            
+        });
     });
 
     formHandler.addInputHandler(Validation.isCompanyEmail);
+    myTruck.printOrders(checklist.addRow.bind(checklist));
 })(window);
